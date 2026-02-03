@@ -1,0 +1,58 @@
+<div class="dashboard">
+
+  <!-- Filters -->
+  <div class="filters">
+    <div class="filter-item">
+      <label>Category</label>
+      <!-- <select [(ngModel)]="selectedCategory">
+        <option value="">All</option>
+        <option *ngFor="let c of categories" [value]="c.name">{{ c.name }}</option>
+      </select> -->
+    </div>
+
+    <div class="filter-item">
+      <label>Date Range</label>
+      <!-- <input type="date" [(ngModel)]="startDate" />
+      <input type="date" [(ngModel)]="endDate" /> -->
+    </div>
+
+    <button class="apply-btn" (click)="applyFilters()">Apply Filters</button>
+  </div>
+
+  <!-- Transactions Table -->
+  <div class="transactions-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Merchant</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Payment Method</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let txn of filteredTransactions">
+          <td>{{ txn.date }}</td>
+          <td>{{ txn.merchant }}</td>
+          <td>
+            <span class="category-badge" [style.background]="txn.categoryColor">
+              <i [class]="'fa fa-' + txn.icon"></i> {{ txn.category }}
+            </span>
+          </td>
+          <td>{{ txn.amount  }}</td>
+          <td>{{ txn.paymentMethod }}</td>
+          <td>{{ txn.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+    <span>Page {{ page }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+  </div>
+</div>

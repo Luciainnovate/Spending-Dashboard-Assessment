@@ -1,0 +1,105 @@
+.dashboard {
+  padding: 2rem;
+  background: #f9fafb;
+  font-family: Arial, sans-serif;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    label {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    select, input {
+      padding: 0.4rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+  }
+
+  .apply-btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    background: #005EB8; /* Capitec Blue */
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background: #2563EB; /* Lighter Capitec Blue */
+    }
+  }
+}
+
+.transactions-table {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+
+    th, td {
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #F3F4F6;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .category-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      color: white;
+      font-size: 0.85rem;
+
+      i {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  button {
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover:not(:disabled) {
+      background: #F3F4F6;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

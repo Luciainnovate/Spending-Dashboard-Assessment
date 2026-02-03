@@ -1,0 +1,346 @@
+.dashboard {
+  padding: 2rem;
+  background: #f9fafb;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    color: gray;
+  }
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 18px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.highlight {
+  border-left: 6px solid #004971;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.category {
+  padding: 1rem;
+  background: #f3f4f6;
+  border-radius: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    padding-bottom: 0.5rem;
+  }
+
+  td {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.goal {
+  margin-top: 1rem;
+
+  progress {
+    width: 100%;
+    height: 12px;
+    border-radius: 10px;
+  }
+}
+
+.trend {
+  color: green;
+  font-weight: bold;
+}
+.chat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.chat-user {
+  align-self: flex-end;
+  background: #004971;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  max-width: 70%;
+}
+
+.chat-other {
+  align-self: flex-start;
+  background: #f3f4f6;
+  color: black;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  max-width: 70%;
+}
+
+canvas {
+  width: 66% !important;
+  height: auto !important;
+}
+.chat-message {
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  background: #f3f4f6;
+}
+
+.chat-message.system {
+  border-left: 4px solid #004971; /* Capitec Dark Blue */
+}
+
+.chat-message.category {
+  border-left: 4px solid #0085BF; /* Capitec Light Blue / Teal */
+}
+
+.chat-message.transaction {
+  border-left: 4px solid #1D1D1B; /* Capitec Dark Grey / Black */
+}
+
+.chat-message.goal {
+  border-left: 4px solid #E33432; /* Capitec Red Highlight */
+}
+
+
+canvas { width: 60% !important; height: auto !important; margin-top: 1rem; }
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem; right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* very high z-index */
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10000; /* ensure it’s above the overlay and everything else */
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem; 
+  right: 0.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10001; /* above modal content */
+}
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 10000;
+
+  /* Center content */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal center */
+  gap: 1rem;
+}
+
+.chart-small {
+  max-width: 90%;
+  height: auto;  /* Chart.js will scale properly */
+  display: block;
+  margin: 0 auto; /* center the canvas */
+}
+
+.chat-container, .chat-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center chat messages */
+  gap: 0.3rem;
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  text-align: center; /* center text inside message */
+  word-wrap: break-word;
+}
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 18px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+
+  /* Center content inside card */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal center */
+  gap: 1rem;
+}
+
+.category-grid, table, .goal {
+  width: 100%; /* keep content full width where needed */
+}
+
+canvas {
+  display: block;
+  margin: 0 auto; /* center the canvas */
+  max-width: 90%;
+}
+
+.chat-message {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  text-align: center;      /* center text */
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: center; /* center all chat messages */
+}
+/* Filters Section */
+.filters {
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background-color: #fff;  // matches card background
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  
+  h3 {
+    margin-bottom: 12px;
+    font-size: 18px;
+    color: #333;
+  }
+
+  .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      color: #555;
+
+      input,
+      select {
+        margin-top: 4px;
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        min-width: 120px;
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+          box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+        }
+      }
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .filter-controls {
+      flex-direction: column;
+      align-items: stretch;
+
+      label {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

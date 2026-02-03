@@ -1,0 +1,134 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <header class="dashboard-header">
+    <h1>Customer Spending Insights</h1>
+    <p>Welcome back, {{ customer.name }}</p>
+  </header>
+
+
+  <!-- Profile + Summary -->
+  <section class="grid-2">
+
+    <div class="card highlight" (click)="openCard('profile')">
+  <h3>Customer Profile</h3>
+  <p><b>Name:</b> {{ customer.name }}</p>
+  <p><b>Email:</b> {{ customer.email }}</p>
+  <p><b>Account Type:</b> {{ customer.accountType }}</p>
+  <p><b>Joined:</b> {{ customer.joinDate | date:'longDate' }}</p>
+  <p><b>Total Spent:</b> {{ customer.currency }} {{ customer.totalSpent | number:'1.2-2' }}</p>
+</div>
+
+    <div class="card highlight" (click)="openCard('summary')">
+      <h3>Spending Summary ({{ summary.period }})</h3>
+      <h2>R {{ summary.totalSpent }}</h2>
+      <p>{{ summary.transactionCount }} transactions</p>
+      <p>Avg: R {{ summary.averageTransaction }}</p>
+      <p>Top Category: {{ summary.topCategory }}</p>
+      <span class="trend">+{{ summary.spentChange }}% vs last period</span>
+    </div>
+
+  </section>
+
+
+  <!-- Categories -->
+<section class="card"  (click)="openCard('categories')">
+  <h3>Spending by Category</h3>
+  <div class="category-grid">
+    <div class="category" *ngFor="let cat of categories">
+      <p>{{ cat.name }}</p>
+      <h4>R {{ cat.amount }}</h4>
+      <small>{{ cat.percentage }}%</small>
+    </div>
+  </div>
+  <canvas id="categoryChart" width="400" height="200"></canvas>
+  <div *ngFor="let msg of categoryChat" class="chat-message category">{{ msg }}</div>
+</section>
+
+
+<!-- Transactions -->
+<section class="card"  (click)="openCard('transactions')">
+  <h3>Recent Transactions</h3>
+  <table>
+    <tr>
+      <th>Merchant</th>
+      <th>Category</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+    <tr *ngFor="let txn of transactions">
+      <td>{{ txn.merchant }}</td>
+      <td>{{ txn.category }}</td>
+      <td>R {{ txn.amount }}</td>
+      <td>{{ txn.date }}</td>
+    </tr>
+  </table>
+  <canvas id="transactionChart" width="400" height="150"></canvas>
+  <div *ngFor="let msg of transactionChat" class="chat-message transaction">{{ msg }}</div>
+</section>
+
+<!-- Goals -->
+<section class="card" (click)="openCard('goals')">
+  <h3>Spending Goals</h3>
+  <div *ngFor="let goal of goals" class="goal">
+    <p>{{ goal.category }}</p>
+    <progress [value]="goal.spent" [max]="goal.budget"></progress>
+    <small>{{ goal.spent }}/{{ goal.budget }}</small>
+  </div>
+ 
+  <div *ngFor="let msg of goalChat" class="chat-message goal">{{ msg }}</div>
+</section>
+
+
+</div>
+
+<div class="modal-overlay" *ngIf="selectedCard">
+  <div class="modal">
+    <button class="close-btn" (click)="closeCard()">✕</button>
+
+    <!-- Profile Modal -->
+    <div *ngIf="selectedCard === 'profile'">
+      <h2>Customer Profile</h2>
+      <p><b>Account:</b> {{ customer.accountType }}</p>
+      <p><b>Joined:</b> {{ customer.joinDate }}</p>
+      <p><b>Total Spent:</b> R {{ customer.totalSpent }}</p>
+      <div *ngFor="let msg of profileChat" class="chat-message system">{{ msg }}</div>
+    </div>
+
+    <!-- Summary Modal -->
+    <div *ngIf="selectedCard === 'summary'">
+      <h2>Spending Summary</h2>
+      <p>Total: R {{ summary.totalSpent }}</p>
+      <p>Transactions: {{ summary.transactionCount }}</p>
+      <p>Avg: R {{ summary.averageTransaction }}</p>
+      <p>Top Category: {{ summary.topCategory }}</p>
+      <div *ngFor="let msg of summaryChat" class="chat-message system">{{ msg }}</div>
+    </div>
+
+    <!-- Categories Modal -->
+    <div *ngIf="selectedCard === 'categories'">
+      <h2>Spending by Category</h2>
+      <canvas id="categoryChartModal" class="chart-small"></canvas>
+      <div *ngFor="let msg of categoryChat" class="chat-message category">{{ msg }}</div>
+    </div>
+
+    <!-- Transactions Modal -->
+    <div *ngIf="selectedCard === 'transactions'">
+      <h2>Recent Transactions</h2>
+      <canvas id="transactionChartModal" class="chart-small"></canvas>
+      <div *ngFor="let msg of transactionChat" class="chat-message transaction">{{ msg }}</div>
+    </div>
+
+    <!-- Goals Modal -->
+    <div *ngIf="selectedCard === 'goals'">
+      <h2>Spending Goals</h2>
+       <div *ngFor="let goal of goals" class="goal">
+    <p>{{ goal.category }}</p>
+    <progress [value]="goal.spent" [max]="goal.budget"></progress>
+    <small>{{ goal.spent }}/{{ goal.budget }}</small>
+  </div>
+      <div *ngFor="let msg of goalChat" class="chat-message goal">{{ msg }}</div>
+    </div>
+  </div>
+</div>
+
