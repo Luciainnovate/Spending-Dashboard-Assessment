@@ -202,27 +202,4 @@ export class DashboardComponent implements OnInit {
     this.selectedCard = null;
   }
 
-
-filter = {
-  startDate: '',
-  endDate: '',
-  category: ''
-};
-
-applyFilters() {
-  // Filter transactions
-  this.filteredTransactions = this.transactions.filter(txn => {
-    const txnDate = new Date(txn.date);
-    const startOk = this.filter.startDate ? txnDate >= new Date(this.filter.startDate) : true;
-    const endOk = this.filter.endDate ? txnDate <= new Date(this.filter.endDate) : true;
-    const categoryOk = this.filter.category ? txn.category === this.filter.category : true;
-    return startOk && endOk && categoryOk;
-  });
-
-  // Filter categories (optional: only show selected category)
-  this.filteredCategories = this.filter.category
-    ? this.categories.filter(cat => cat.name === this.filter.category)
-    : [...this.categories];
-}
-
 }

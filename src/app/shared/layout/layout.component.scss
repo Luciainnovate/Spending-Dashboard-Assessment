@@ -213,3 +213,23 @@ margin-left: 41px;
   height: 30vh;              /* keep proportions */
   object-fit: contain;
 }
+/* Layout container */
+.app-layout {
+  display: flex;
+  height: 93vh; /* full viewport height */
+}
+
+.topbar {
+
+  z-index: 10;
+  flex-shrink: 0; /* prevent header from shrinking */
+}
+
+/* Content scrolls below header */
+.content {
+  flex: 1; /* take remaining vertical space */
+  overflow-y: auto; /* enable vertical scrolling */
+  padding: 16px; /* optional */
+}
+
+
